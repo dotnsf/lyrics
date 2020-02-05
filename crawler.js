@@ -134,7 +134,11 @@ async function saveSong( capital, artist_name, song_name, url, lyric, lyricist, 
     };
     //console.log( data );
 
-    fs.writeFileSync( filename, JSON.stringify( data, null, 2 ) );
+    try{
+      fs.writeFileSync( filename, JSON.stringify( data, null, 2 ) );
+    }catch( e ){
+      console.log( e );
+    }
     resolve( true );
   });
 }
