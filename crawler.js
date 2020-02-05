@@ -11,10 +11,10 @@ async_main( base_url ).then( function(){} );
 
 async function async_main( url ){
   return new Promise( async function( resolve, reject ){
-    for( var i = 0; i <= 0/*70*/; i ++ ){
+    for( var i = 0; i <= 70; i ++ ){
       fs.mkdirSync( out_dir + i );
       var artists = await getNamesHrefs( url + i, '.anchor_box .artist_list dd ul li p.name a' );
-      for( var j = 0; j < 5/*artists.length*/; j ++ ){
+      for( var j = 0; j < artists.length; j ++ ){
         var artist = artists[j];
         await crawlArtist( i, artist.name, 'http://www.uta-net.com' + artist.href );
       }
